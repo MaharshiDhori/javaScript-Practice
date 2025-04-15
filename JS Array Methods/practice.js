@@ -75,12 +75,39 @@ console.log("\n");
 const totalMass = characters.reduce((acc, cur) => {
     return acc + cur.mass;
 }, 0)
-console.log();
+console.log("Get total mass of all characters:");
 console.log(totalMass);
-//2. Get total height of all characters
-//3. Get total number of characters by eye color
-//4. Get total number of characters in all the character names
+console.log("\n");
 
+//2. Get total height of all characters
+const totalHeight = characters.reduce((acc, cur) => {
+    return acc + cur.height;
+}, 0)
+console.log("Get total height of all characters:");
+console.log(totalHeight);
+console.log("\n");
+
+//3. Get total number of characters by eye color
+const characterByEyeColor = characters.reduce((acc, cur) => {
+    const color = cur.eye_color;
+    if (acc[color]) {
+        acc[color]++
+    } else {
+        acc[color] = 1
+    }
+    return acc;
+}, {})
+console.log("Get total number of characters by eye color:");
+console.log(characterByEyeColor);
+console.log("\n");
+
+//4. Get total number of characters in all the character names
+const totalName = characters.reduce((acc,cur) => {
+    return acc + cur.name.length; 
+}, 0)
+console.log("Get total number of characters in all the character names:");
+console.log(totalName);
+console.log("\n");
 
 /*
 ***************************
@@ -129,9 +156,42 @@ console.log("\n")
 
 //***SORT***
 //1. Sort by mass
+const sortByMass = characters.some((a,b) => {
+    return a.mass - b.mass
+})
+console.log("Sorted by mass: \n")
+console.log(sortByMass)
+console.log("\n")
+
+
 //2. Sort by height
+const sortByHeight = characters.sort((a,b) => {
+    return a.height - b.height;
+})
+console.log("Sorted by height: \n");
+console.log(sortByHeight);
+console.log("\n")
+
 //3. Sort by name
+const sortByName = characters.sort((a,b) => {
+    if (a.name < b.name) {
+        return -1
+    } else {
+        return 1;
+    }
+})
+console.log("Sorted by name: \n");
+console.log(sortByName);
+console.log("\n");
+
 //4. Sort by gender
+const sortByGender = characters.sort((a,b) => {
+    if(a.gender === "female") return -1;
+    return 1;
+})
+console.log("Sorted by gender: \n");
+console.log(sortByGender)
+console.log("\n");
 
 
 /*
